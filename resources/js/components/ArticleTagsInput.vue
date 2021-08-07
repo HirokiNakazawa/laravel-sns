@@ -17,39 +17,39 @@
 </template>
 
 <script>
-import VueTagsInput from '@johmun/vue-tags-input';
+  import VueTagsInput from '@johmun/vue-tags-input';
 
-export default {
-  components: {
-    VueTagsInput,
-  },
-  props: {
-    initialTags: {
-      type: Array,
-      default: [],
+  export default {
+    components: {
+      VueTagsInput,
     },
-    autocompleteItems: {
-      type: Array,
-      default: [],
+    props: {
+      initialTags: {
+        type: Array,
+        default: [],
+      },
+      autocompleteItems: {
+        type: Array,
+        default: [],
+      },
     },
-  },
-  data() {
-    return {
-      tag: '',
-      tags: this.initialTags,
-    };
-  },
-  computed: {
-    filteredItems() {
-      return this.autocompleteItems.filter(i => {
-        return i.text.toLowerCase().indexOf(this.tag.toLowerCase()) !== -1;
-      });
+    data() {
+      return {
+        tag: '',
+        tags: this.initialTags,
+      };
     },
-    tagsJson() {
-      return Json.stringify(this.tags)
+    computed: {
+      filteredItems() {
+        return this.autocompleteItems.filter(i => {
+          return i.text.toLowerCase().indexOf(this.tag.toLowerCase()) !== -1;
+        });
+      },
+      tagsJson() {
+        return JSON.stringify(this.tags)
+      },
     },
-  },
-};
+  };
 </script>
 <style lang="css" scoped>
   .vue-tags-input {
