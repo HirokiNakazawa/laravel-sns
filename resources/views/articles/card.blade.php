@@ -60,7 +60,7 @@
       </a>
     </h3>
     <div class="card-text">
-      {{ $article->body }}
+      {!! nl2br(e( $article->body)) !!}
     </div>
   </div>
   <div class="card-body pt-0 pb-2 pl-3">
@@ -79,8 +79,8 @@
       <div class="card-body pt-0 pb-4 pl-3">
         <div class="card-text line-height">
     @endif
-          <a href="" class="border p-1 mr-1 mt-1 text-muted">
-            {{ $tag->hashTag }}
+          <a href="{{ route('tags.show', ['name' => $tag->name]) }}" class="border p-1 mr-1 mt-1 text-muted">
+            {{ $tag->hashtag }}
           </a>
     @if($loop->last)
         </div>
