@@ -1,8 +1,13 @@
 <div class="card mt-3">
   <div class="card-body d-flex flex-row">
-    <i class="fas fa-user-circle fa-3x mr-1"></i>
-    <div>
+    <a href="{{ route('users.show', ['name' => $article->user->name]) }}">
+      <i class="fas fa-user-circle fa-3x mr-1"></i>
+    </a>
+      <div>
       <div class="font-weight-bold">{{ $article->user->name }}</div>
+        <a href="{{ route('users.show', ['name' => $article->user->name])}}">
+          {{ $article->user->name }}
+        </a>
       <div class="font-weight-lighter">{{ $article->created_at->format('Y/m/d H:i') }}</div>
     </div>
 
