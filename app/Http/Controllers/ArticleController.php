@@ -20,7 +20,10 @@ class ArticleController extends Controller
     }
 
     public function create() {
-        return view('articles.create');
+        $allTagNames = Tag::all()->map(function ($tag) {
+            return ['text' => $tag->name];
+        });
+        return view('articles.create', ['allTagNames' => $allTagNames]);
     }
 
     public function store(ArticleRequest $request, Article $article) {
@@ -40,10 +43,15 @@ class ArticleController extends Controller
         $tagNames = $article->tags->map(function ($tag) {
             return ['text' => $tag->name];
         });
-        
+
+        $allTagNames = Tag::all()->map(function ($tag) {
+            return ['text' => $tag->name];
+        });
+
         return view('articles.edit', [
             'article' => $article,
             'tagNames' => $tagNames,
+            'allTagNames' => $allTagNames,
         ]);
     }
 
